@@ -9,7 +9,7 @@ Satu mod **server-side** (pemain **tidak perlu** memasang mod di client) untuk s
 | Fabric API | 0.165.0+26.3 |
 | Java | 25 |
 | Gradle | 9.6.0 (diinstal oleh workflow) |
-| Loom | `net.fabricmc.fabric-loom` 1.17 (plugin non-obfuscated, versi di `gradle.properties`) |
+| Loom | `net.fabricmc.fabric-loom` 1.17-SNAPSHOT (plugin non-obfuscated, versi di `gradle.properties`) |
 
 ## Instalasi
 1. Unduh `lapershop-x.y.z.jar` dari **GitHub Actions → Artifacts** atau **Releases**.
