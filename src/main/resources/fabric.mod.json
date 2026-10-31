@@ -1,0 +1,19 @@
+{
+  "schemaVersion": 1,
+  "id": "lapershop",
+  "version": "${version}",
+  "name": "LaperShop",
+  "description": "Survival kompetitif: cooldown Trident/Ender Pearl, Totem & Mending langka, death counter di TAB, tanpa koordinat/locator bar, dan LAPER SHOP berbasis event.",
+  "authors": [ "LaperShop" ],
+  "license": "All-Rights-Reserved",
+  "environment": "*",
+  "entrypoints": {
+    "main": [ "dev.lapershop.LaperShopMod" ]
+  },
+  "depends": {
+    "fabricloader": ">=0.19.5",
+    "minecraft": "~26.3",
+    "java": ">=25",
+    "fabric-api": "*"
+  }
+}
