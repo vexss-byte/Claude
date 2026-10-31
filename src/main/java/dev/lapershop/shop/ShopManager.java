@@ -6,6 +6,7 @@ import java.time.ZoneOffset;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
+import java.util.UUID;
 import java.time.LocalTime;
 
 import dev.lapershop.LaperShopMod;
@@ -70,7 +71,7 @@ public final class ShopManager {
         DataStore.prunePurchases(scopeKey());
         announceOpenOnce(server, cfg, w);
 
-        bar = new ServerBossEvent(Component.empty(), color(cfg), BossEvent.BossBarOverlay.PROGRESS);
+        bar = new ServerBossEvent(UUID.randomUUID(), Component.empty(), color(cfg), BossEvent.BossBarOverlay.PROGRESS);
         for (ServerPlayer p : server.getPlayerList().getPlayers()) bar.addPlayer(p);
         LaperShopMod.LOGGER.info("LAPER SHOP dibuka.");
     }

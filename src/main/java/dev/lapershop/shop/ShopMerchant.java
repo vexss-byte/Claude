@@ -15,6 +15,7 @@ import dev.lapershop.data.DataStore;
 import dev.lapershop.util.Ids;
 import dev.lapershop.util.TextUtil;
 import net.minecraft.core.RegistryAccess;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
@@ -144,7 +145,7 @@ public final class ShopMerchant implements Merchant {
             for (LaperConfig.ItemSpec bonus : cfg.bonusRewards) {
                 ItemStack stack = ShopItems.build(bonus, access);
                 if (stack == null || stack.isEmpty()) continue;
-                if (!sp.getInventory().add(stack)) sp.drop(stack, false);
+                if (!sp.getInventory().add(stack)) sp.spawnAtLocation((ServerLevel) sp.level(), stack);
             }
         }
     }

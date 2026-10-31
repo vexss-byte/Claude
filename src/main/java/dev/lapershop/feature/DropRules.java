@@ -15,7 +15,7 @@ import net.minecraft.core.component.DataComponents;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.EntityTypes;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -38,7 +38,7 @@ public final class DropRules {
     public static void register() {
         // --- Totem dari Evoker (termasuk Evoker Raid) ---
         ServerLivingEntityEvents.AFTER_DEATH.register((entity, source) -> {
-            if (entity.getType() == EntityType.EVOKER) onEvokerDeath(entity);
+            if (entity.getType() == EntityTypes.EVOKER) onEvokerDeath(entity);
         });
 
         // --- Mending dari memancing ---
@@ -48,7 +48,7 @@ public final class DropRules {
 
         // --- Mending dari Librarian ---
         UseEntityCallback.EVENT.register((player, level, hand, entity, hit) -> {
-            if (!level.isClientSide() && entity.getType() == EntityType.VILLAGER && entity instanceof Merchant m) {
+            if (!level.isClientSide() && entity.getType() == EntityTypes.VILLAGER && entity instanceof Merchant m) {
                 rewriteVillager(entity, m, level.registryAccess());
             }
             return InteractionResult.PASS;
@@ -79,7 +79,7 @@ public final class DropRules {
                 || !ItemUtil.has(stack.get(DataComponents.STORED_ENCHANTMENTS), Enchantments.MENDING)) return;
 
         // Hanya buku yang muncul tepat di posisi pelampung pancing.
-        var hooks = level.getEntities(EntityType.FISHING_BOBBER, item.getBoundingBox().inflate(2.0), h -> true);
+        var hooks = level.getEntities(EntityTypes.FISHING_BOBBER, item.getBoundingBox().inflate(2.0), h -> true);
         if (hooks.isEmpty()) return;
 
         if (level.getRandom().nextDouble() < cfg.fishingKeepChance) return; // beruntung: Mending tetap
